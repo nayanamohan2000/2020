@@ -1,0 +1,115 @@
+package program2a;
+import java.util.Scanner;
+public class staffdetailsmain {
+	public static void main(String[] args) {
+		teaching teach=new teaching();
+		technical tech=new technical();
+        contract cont=new contract();
+        System.out.println("enter teaching staff details");
+        teach.read();
+        System.out.println("\n enter technical staff details");
+        tech.read();
+        System.out.println("\n enter contract staff details");
+        cont.read();
+        System.out.println("\n here is the details of teaching staff");
+        teach.display();
+        System.out.println("\n here is the details of tech staff");
+        tech.display();
+        System.out.println("\n here is the details of contract staff");
+        cont.display();
+	}
+}
+class staff
+{
+	String name,phone;
+	int sid,sal;
+	Scanner scannerobj=new Scanner(System.in);
+	void read()
+	{
+		System.out.println("staff id:");
+		sid=scannerobj.nextInt();
+		
+		System.out.println("Name:");
+		name=scannerobj.next();
+		
+		System.out.println("phone");
+		phone=scannerobj.next();
+		
+		System.out.println("salary:");
+		sal=scannerobj.nextInt();
+		
+		scannerobj.nextLine();
+	}
+	void display()
+	{
+		System.out.println("Staff id:"+sid);
+		System.out.println("Name:"+name);
+		System.out.println("phone:"+phone);
+		System.out.println("salary:"+ sal);
+	}
+}
+class teaching extends staff
+{
+	String domain;
+	int publications;
+	void read()
+	{
+		super.read();
+		System.out.println("domain:");
+		domain=scannerobj.nextLine();
+		System.out.print("publications:");
+		publications=scannerobj.nextInt();
+        
+    }
+	void display()
+	{
+		super.display();
+		System.out.println("Domain:"+domain);
+		System.out.println("publications:"+publications);
+	}
+	
+}
+	class technical extends staff
+	{
+		String[] skills;
+		
+		void read()
+		{
+			super.read();
+			System.out.print("skill:");
+			skills=scannerobj.nextLine().split(",");
+		}
+		void dispaly()
+		{
+			super.display();
+			System.out.print("skills:");
+			for(int i=0;i<skills.length;i++)
+			{
+				System.out.print(skills[i]+" ");
+			    System.out.println();
+			
+			}
+		}
+	}
+	class contract extends staff
+	{
+		int period;
+		void read()
+		{
+			super.read();
+			System.out.printf("Contract period:");
+			period=scannerobj.nextInt();
+		}
+		void display()
+		{
+			super.display();
+			System .out.print("contract period:"+period);
+		}
+		
+	}
+	
+	
+	
+
+
+		
