@@ -1,0 +1,42 @@
+package program1a;
+import java.util.Scanner;
+public class student {
+
+	public String usn,name,branch;
+	public long phone;
+	Scanner scannerobj=new Scanner(System.in);
+	public void get(int x)
+	{
+		System.out.println("enter name,usn,branch and phone no of a"+ x +"student");
+		name=scannerobj.nextLine();
+		usn=scannerobj.nextLine();
+		branch=scannerobj.nextLine();
+        phone=scannerobj.nextLong();
+	}
+    public void print()
+    {
+    	System.out.println(name+"\t\t"+usn+"\t\t"+branch+"\t\t"+phone+"\n");
+    }
+}
+package program1a;
+import java.util.Scanner;
+public class Studentmain {
+	public static void main(String[] args) {
+		student[] str=new student[10];
+		Scanner scannerobj=new Scanner(System.in);
+		System.out.println("enter the number of students");
+		int n=scannerobj.nextInt();
+		for(int i=1;i<=n;i++)
+		{
+			str[i]=new student();
+			str[i].get(i);
+		}
+		System.out.println("STUDENT INFORMATION\n");
+		System.out.println("NAME\t\t" +"usn\t\t" +"branch\t\t" + "phonenumber\n");
+		for(int i=1;i<=n;i++)
+		{
+			str[i].print();
+		}
+	}
+
+}
