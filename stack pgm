@@ -1,0 +1,77 @@
+package program1b;
+import java.util.Scanner;
+public class stack {
+	public int top=-1,item;
+	public int max=5;
+	public int a[]=new int[max];
+	Scanner scannerobj=new Scanner(System.in);
+	
+	public void push()
+	{
+		if(top<max-1)
+		{
+			System.out.println("enter the element to be inserted\n");
+			item=scannerobj.nextInt();
+			a[++top]=item;
+			
+		}
+		else
+		System.out.println("OVERFLOW\n");
+	}
+	public void pop()
+	{
+		if(top>=0)
+		{
+			item=a[top--];
+			System.out.println(item +"is popped");
+			
+		}
+		else
+		System.out.println("UNDERFLOW\n");
+		
+	}
+	public void dis()
+	{
+		if(top>=0)
+		{
+			System.out.println("STACK CONTENTS ARE:\n");
+			for(int i=top;i>=0;i++)
+			System.out.println(a[i]);
+		}
+		else
+		System.out.println("NO ELEMENTS\n");
+	}
+}
+	package program1b;
+import java.util.Scanner;
+public class stackmain {
+	public static void main(String[] args)
+	{
+		stack s=new stack();
+		int ch;
+		do
+		{
+			System.out.println("Stack operations");
+			System.out.println("1.push\n"+ "2.pop\n" +"3.display\n");
+			System.out.println("enter your choice");
+			Scanner scannerobj=new Scanner(System.in);
+			ch=scannerobj.nextInt();
+			switch(ch)
+			{
+			case 1:s.push();
+			break;
+			case 2:s.pop();
+			break;
+			case 3:s.dis();
+			break;
+			default:System.out.println("invalid choice");
+			break;
+			}
+		}while(ch!=4);
+	}
+
+}
+
+	
+	
+	
