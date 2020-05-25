@@ -1,0 +1,23 @@
+package program3a;
+import java.util.Scanner;
+public class compute {
+      public static void main(String[] args) {
+    	  int a,b;
+    	  Scanner scannerobj=new Scanner(System.in);
+    	  System.out.println("enter a and b values");
+    	  a=scannerobj.nextInt();
+    	  b=scannerobj.nextInt();
+    	  
+    	  try
+    	  {
+    		  int c=a/b;
+    		  System.out.println("result="+c);
+    		  
+    	  }
+    	  catch(ArithmeticException e)
+    	  {
+    		  System.out.println("exception Caught"+e);
+    		  
+    	  }
+      }
+}
