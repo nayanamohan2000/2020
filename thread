@@ -1,0 +1,74 @@
+package program3b;
+import java.util.Random;
+import java.util.Scanner;
+public class mythreadmain {
+    public static void main(String[]args)
+    {
+    	System.out.println("enter the value of n\n");
+    	Scanner scannerobj=new Scanner(System.in);
+        int n=scannerobj.nextInt();
+        mythread my=new mythread(n);
+         
+        my.start();
+        
+    }
+}
+class mythread extends Thread
+{
+	int num;
+	mythread(int n)
+	{
+		num=n;
+	}
+	Random rm=new Random();
+	public void run()
+	{
+		int i=0;
+		try
+		{
+			while(i<num)
+			{
+				int x=rm.nextInt(100);
+				System.out.println("Random integer is "+x);
+				
+				Thread.sleep(1000*1);
+				sqthread sq=new sqthread(x);
+				sq.start();
+				
+				cuthread cu=new cuthread(x);
+				cu.start();
+				
+			System.out.println("\n\n");
+			i++;
+			}
+		}
+		catch(InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+class sqthread extends Thread
+{
+	int num;
+	sqthread(int n)
+	{
+		num=n;
+	}
+	public void run()
+	{
+		System.out.println("square of"+num+"is"+num*num);
+	}
+}
+class cuthread extends Thread
+{
+	int num;
+	cuthread(int n)
+	{
+		num=n;
+	}
+	public void run()
+	{
+		System.out.println("cube of"+num+"is"+(num*num*num));
+	}
+}
