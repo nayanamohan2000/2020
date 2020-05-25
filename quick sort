@@ -1,0 +1,83 @@
+package program4;
+
+public class quicksort {
+    public void quick(int a[],int low,int high)
+    {
+    	int j;
+    	if(low<high)
+    	{
+    		j=partition(a,low,high);
+    		quick(a,low,j-1);
+    		quick(a,j+1,high);
+    	}
+    }
+    public int partition(int a[],int low,int high)
+    {
+    	int i,j,key,temp;
+    	key=a[low];
+    	i=low+1;
+    	j=high;
+    	for(;;)
+    	{
+    		while((i<high)&&(j>=low))
+            {
+	           i++;
+	        }
+            while((key<a[j])&&(j>=low))
+            {
+            	j--;
+            }
+            if(i<j)
+            {
+            	temp=a[i];
+            	a[i]=a[j];
+            	a[j]=temp;
+            }
+            else
+            {
+            	temp=a[low];
+            	a[low]=a[j];
+            	a[j]=temp;
+            	return j;
+            }
+    	}
+    }
+}
+package program4;
+import java.util.Scanner;
+import java.util.Random;
+public class quicksortmain {
+ 
+	public static void main(String[] args)
+	{
+		quicksort q=new quicksort();
+		Random r=new Random();
+		int a[]=new int[100000],i,n;
+		float start,end;
+		
+		Scanner scannerobj=new Scanner(System.in);
+				System.out.println("enter the number of elements:");
+		n=scannerobj.nextInt();
+		
+		System.out.println("\nRandom elements are:");
+		for(i=0;i<n;i++)
+		{
+			a[i]=r.nextInt(1000);
+		}
+		System.out.println("\n the array elements are:\n");
+		for(i=0;i<n;i++)
+		{
+			System.out.println("\n"+a[i]);
+		}
+		long startTime=System.currentTimeMillis();
+		q.quick(a,0,n-1);
+		long endTime=System.currentTimeMillis();
+		long totalTime=endTime-startTime;
+		System.out.println("\n the sorted elements are:\n");
+		for(i=0;i<n;i++)
+		{
+			System.out.println("\n"+a[i]);
+		}
+		System.out.println("Total time taken:"+totalTime+"ms");
+	}
+}
