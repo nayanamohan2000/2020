@@ -1,0 +1,84 @@
+package program5;
+public class mergesort {
+     void merge(int a[],int low,int high)
+     {
+    	 int mid;
+    	 if(low<high)
+    	 {
+    		 mid=(low+high)/2;
+    		 merge(a,low,mid);
+    		 merge(a,mid+1,high);
+    		 simplemerge(a,low,mid,high);
+    	 }
+     }
+     void simplemerge(int a[],int low,int mid,int high)
+     {
+    	 int i=low,j=mid+1,k=low,c[]=new int[1000];
+    	 while((i<=mid)&&(j<=high))
+    	 {
+    		 if(a[i]<a[j])
+    		 {
+    			 c[k]=a[i];
+    			 i++;
+    			 k++;
+    		 }
+    		 else
+    		 {
+    			 c[k]=a[j];
+    			 j++;
+    			 k++;
+    		 }
+    	 }
+    	 while(i<=mid) {
+    		 c[k]=a[i];
+    		 k++;
+    		 i++;
+    	 }
+    	 while(j<=high)
+    	 {
+    		 c[k]=a[j];
+    		 j++;
+    		 k++;
+    	 }
+    	 for(i=low;i<=high;i++)
+    	 {
+    		 a[i]=c[i];
+    		 
+    	 }
+     }
+}
+package program5;
+import java.util.Scanner;
+import java.util.Random;
+public class mergesortmain {
+	public static void main(String[] args)
+	{
+	     mergesort q=new mergesort();
+	     Random r=new Random();
+	     int a[]=new int[100000],i,n;
+	     float start,end;
+	     
+	     Scanner scannerobj=new Scanner(System.in);
+	     System.out.println("enter the no of elements:");
+	     n=scannerobj.nextInt();
+	     System.out.println("n enter the array elements:");
+	     for(i=0;i<n;i++)
+	     {
+	    	 a[i]=r.nextInt(1000);
+	     }
+	     System.out.println("\n the array elements are:");
+	     for(i=0;i<n;i++)
+	     {
+	    	 System.out.println("\n"+a[i]);
+	     }
+	     long startTime=System.currentTimeMillis();
+	     q.merge(a,0,n-1);
+	     long endTime=System.currentTimeMillis();
+	     long totalTime=endTime-startTime;
+	     System.out.println("\n the sorted elements are:\n");
+	     for(i=0;i<n;i++) {
+	    	 System.out.println("\n"+a[i]);
+	     }
+	     System.out.println("total time:"+totalTime+"ms");
+	}
+}
