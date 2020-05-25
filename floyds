@@ -1,0 +1,48 @@
+package program9a;
+
+public class floyds {
+	public int min1(int a,int b)
+	{
+		return(a<b?a:b);
+	}
+	public void floy(int a[][],int n)
+	{
+		int i,j,k;
+		for(k=1;k<=n;++k)
+		{
+			for(i=1;i<=n;i++)
+				for(j=1;j<=n;++j)
+					a[i][j]=min1(a[i][j],a[i][k]+a[k][j]);
+		}
+		System.out.println();
+		for(i=1;i<=n;i++)
+		{
+			for(j=1;j<=n;j++)
+			{
+				System.out.print(a[i][j]+"\t");
+			}
+			System.out.println();
+		}
+	}
+
+}
+package program9a;
+import java.util.Scanner;
+public class floydsmain {
+public static void main(String[]args)
+{
+	int a[][]=new int[10][10],i,j,n;
+	float start,end;
+	floyds f=new floyds();
+	System.out.println("\n enter the no of nodes in a graph:\n)");
+	Scanner scannerobj=new Scanner(System.in);
+	n=scannerobj.nextInt();
+	System.out.println("\n enter the cost adjacency matrix:\n");
+	for(i=1;i<=n;++i)
+		for(j=1;j<=n;++j)
+			a[i][j]=scannerobj.nextInt();
+	System.out.println("\n the all pai shortest path matrix is\n");
+			f.floy(a,n);
+			
+}
+}
