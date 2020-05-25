@@ -1,0 +1,67 @@
+package program6;
+
+public class knapsack {
+    static int max(int a,int b)
+    {
+    	return(a>b)?a:b;
+    }
+    int a[][]=new int[10][10];
+    void knap(int n,int w[],int p[],int c)
+    {
+    	int i,j;
+    	for(i=0;i<=n;i++)
+    	for(j=0;j<=c;j++)
+    	{
+    		 if(i==0||j==0)
+    			 a[i][j]=0;
+    		 else if(w[i]>j)
+    	      a[i][j]=a[i-1][j];
+    		 else
+    			 a[i][j]=max(a[i-1][j],(a[i-1][j-w[i]]+p[i]));
+    	}
+    	System.out.println(a[n][c]);
+    	System.out.println();
+    	for(i=0;i<=n;i++)
+    	{
+    		for(j=0;j<=c;j++)
+
+    	{
+    			System.out.println(a[i][j]+"\t");
+    	}
+    		System.out.println();
+    		
+    	}
+    }
+}
+package program6;
+import java.util.Scanner;
+public class knapsackmain {
+	public static void main(String[] args)
+	{
+		knapsack k=new knapsack();
+		Scanner scannerobj=new Scanner(System.in);
+		
+		System.out.println("enter the number of objects:");
+		int n=scannerobj.nextInt();
+		
+		System.out.println("enter the object's weights:");
+		int w[]=new int[10];
+		
+		for(int i=0;i<n;i++)
+		w[i]=scannerobj.nextInt();
+		
+		System.out.println("enter the object's profit:");
+		int p[]=new int[10];
+		for(int i=0;i<n;i++)
+			p[i]=scannerobj.nextInt();
+		
+		System.out.println("enter the maximum capacity");
+				int c=scannerobj.nextInt();
+				
+				System.out.println("the max value that can be put in a knapsack of capacity w is:");
+				k.knap(n,w,p,c);
+				scannerobj.close();
+	}
+	
+
+}
